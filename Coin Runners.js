@@ -45,7 +45,7 @@ powerup.style.left = xPowerup+"px";
 powerup.style.top = yPowerup+"px";
 
 //Styles gameover to be invisible
-gameover.style.color = "black";
+gameover.style.display = "none";
 
 //Storing Essential Variables
 var boxSpeed = 10;
@@ -295,5 +295,5 @@ function powerDown(q) {
 function timeOut(q) {
 	alert("30 seconds is up! You scored " + score + " points!");
 	gameRunning = false;
-	gameover.style.color = "red"; //+ Adjust this
+	gameover.style.display = "inline-block";
 }
