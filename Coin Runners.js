@@ -44,6 +44,16 @@ var yPowerup = (Math.ceil(Math.random() * 44) + 1) * 10;
 powerup.style.left = xPowerup+"px";
 powerup.style.top = yPowerup+"px";
 
+//Declaring the box and items' central position for hitbox detection
+var xBoxCentre = xBox + (box.offsetWidth / 2);
+var yBoxCentre = yBox + (box.offsetHeight / 2);
+var xCoinCentre = xCoin + (coin.offsetWidth / 2);
+var yCoinCentre = yCoin + (coin.offsetHeight / 2);
+var xCoin2Centre = xCoin2 + (coin2.offsetWidth / 2);
+var yCoin2Centre = yCoin2 + (coin2.offsetHeight / 2);
+var xPowerupCentre = xPowerup + (powerup.offsetWidth / 2);
+var yPowerupCentre = yPowerup + (powerup.offsetHeight / 2);
+
 //Styles gameover to be invisible
 gameover.style.display = "none";
 
@@ -84,6 +94,7 @@ setTimeout(timeOut, 30000);
 //Declaring a movement
 function analyseKeypress(q) {
 	if (gameRunning == true) {
+
 //Moving left
 		if (q.keyCode == "37") {
 			if(xBox <= 1) {					//Is the box 1 or less pixels to from the left? If so, then don't move.
@@ -225,15 +236,27 @@ function analyseKeypress(q) {
 				}
 			}
 		}	
+		
+//Updating the box and items' central position for hitbox detection
+		xBoxCentre = xBox + (box.offsetWidth / 2);
+		yBoxCentre = yBox + (box.offsetHeight / 2);
+		xCoinCentre = xCoin + (coin.offsetWidth / 2);
+		yCoinCentre = yCoin + (coin.offsetHeight / 2);
+		xCoin2Centre = xCoin2 + (coin2.offsetWidth / 2);
+		yCoin2Centre = yCoin2 + (coin2.offsetHeight / 2);
+		xPowerupCentre = xPowerup + (powerup.offsetWidth / 2);
+		yPowerupCentre = yPowerup + (powerup.offsetHeight / 2);
+		
 		itemCheck()
+		
 	}
 }
 
 //Declaring Coin Detection
 function itemCheck(q) {
 	if (gameRunning == true) {
-		if ((yBox + 25) > (yCoin - 10) && (yBox + 25) < (yCoin + 30)) {
-			if ((xBox +25) > (xCoin - 10) && (xBox + 25) < (xCoin + 30)) {
+		if ((yBoxCentre) > (yCoinCentre - 35) && (yBoxCentre) < (yCoinCentre + 35)) {
+			if ((xBoxCentre) > (xCoinCentre - 35) && (xBoxCentre) < (xCoinCentre + 35)) {
 				
 				xCoin = (Math.ceil(Math.random() * 131) + 1) * 10;			//Randomly re-places the coin
 				yCoin = (Math.ceil(Math.random() * 44) + 1) * 10;			//+ Adjust this
@@ -251,8 +274,8 @@ function itemCheck(q) {
 			}
 		}
 		
-		if ((yBox + 25) > (yCoin2 - 10) && (yBox + 25) < (yCoin2 + 30)) {
-			if ((xBox +25) > (xCoin2 - 10) && (xBox + 25) < (xCoin2 + 30)) {
+		if ((yBoxCentre) > (yCoin2Centre - 35) && (yBoxCentre) < (yCoin2Centre + 35)) {
+			if ((xBoxCentre) > (xCoin2Centre - 35) && (xBoxCentre) < (xCoin2Centre + 35)) {
 				
 				xCoin2 = (Math.ceil(Math.random() * 131) + 1) * 10;			//Randomly re-places the coin
 				yCoin2 = (Math.ceil(Math.random() * 44) + 1) * 10;			//+ Adjust this
@@ -270,8 +293,8 @@ function itemCheck(q) {
 			}
 		}
 		
-		if ((yBox + 25) > (yPowerup - 10) && (yBox + 25) < (yPowerup + 30)) {
-			if ((xBox + 25) > (xPowerup - 10) && (xBox + 25) < (xPowerup + 30)) {
+		if ((yBoxCentre) > (yPowerupCentre - 35) && (yBoxCentre) < (yPowerupCentre + 35)) {
+			if ((xBoxCentre) > (xPowerupCentre - 35) && (xBoxCentre) < (xPowerupCentre + 35)) {
 				
 				xPowerup = (Math.ceil(Math.random() * 131) + 1) * 10;				//Randomly re-places powerup
 				yPowerup = (Math.ceil(Math.random() * 44) + 1) * 10;				//+ Adjust this
