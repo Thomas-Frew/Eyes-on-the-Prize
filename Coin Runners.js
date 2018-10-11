@@ -64,6 +64,21 @@ var score = 0;
 var gameRunning = true;
 var timer;
 
+// Provides a rule alert on 'Show Rules" click
+function alertRules () {
+        const RULES = [
+                'You have 30 seconds to collect as many coins as you can.',
+                'Green power ups will give you a short speed boost.'
+        ];
+
+        let ruleOutput = "Rules:\n";
+        RULES.forEach(rule => {
+                ruleOutput += rule + "\n";
+        })
+
+        alert(ruleOutput);
+}
+
 //Locates score area an primes for replacement
 var textSection = document.getElementById("textSection");
 var scoreSection = document.getElementById("scoreSection");
