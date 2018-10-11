@@ -25,21 +25,21 @@ var yPupil = 7.5;
 pupil.style.left = xPupil+"px";
 pupil.style.top = yPupil+"px";
 
-///Coin (1)
-var xCoin = (Math.ceil(Math.random() * 131) + 1) * 10;
+//Coin (1)
+var xCoin = (Math.ceil(Math.random() * 131) + 1) * 10;			//+ Adjust this
 var yCoin = (Math.ceil(Math.random() * 44) + 1) * 10;
 coin.style.left = xCoin+"px";
 coin.style.top = yCoin+"px";
 
 //Coin (2)
-var xCoin2 = (Math.ceil(Math.random() * 131) + 1) * 10;
+var xCoin2 = (Math.ceil(Math.random() * 131) + 1) * 10;			//+ Adjust this
 var yCoin2 = (Math.ceil(Math.random() * 44) + 1) * 10;
 coin2.style.left = xCoin2+"px";
 coin2.style.top = yCoin2+"px";
 
 
 //Powerup
-var xPowerup = (Math.ceil(Math.random() * 131) + 1) * 10;
+var xPowerup = (Math.ceil(Math.random() * 131) + 1) * 10;		//+ Adjust this
 var yPowerup = (Math.ceil(Math.random() * 44) + 1) * 10;
 powerup.style.left = xPowerup+"px";
 powerup.style.top = yPowerup+"px";
@@ -87,7 +87,7 @@ function analyseKeypress(q) {
 //Moving left
 		if (q.keyCode == "37") {
 			if(xBox <= 1) {					//Is the box 1 or less pixels to from the left? If so, then don't move.
-				box.style.left = xBox+"px";
+				box.style.left = xBox+"px";	//+ Adjust this
 			}
 			
 			else {							//Otherwise, Move.
@@ -95,7 +95,7 @@ function analyseKeypress(q) {
 				box.style.left = xBox+"px";
 				
 				if(xBox <= 1) {					//Is the box 1 or less pixels to from the left? If so, then move back.
-				xBox += boxSpeed;
+				xBox += boxSpeed;				//+ Adjust this
 				box.style.left = xBox+"px";
 				}
 				
@@ -122,7 +122,7 @@ function analyseKeypress(q) {
 	//Moving up
 		if (q.keyCode == "38") {
 			if(yBox <= 1) {					//Is the box 1 or less pixels from the top? If so, then don't move.
-				box.style.top = yBox+"px";
+				box.style.top = yBox+"px";	//+ Adjust this
 			}
 			
 			else {
@@ -130,7 +130,7 @@ function analyseKeypress(q) {
 				box.style.top = yBox+"px";
 				
 				if(yBox <= 1) {					//Is the box 1 or less pixels to from the left? If so, then move back.
-				yBox += boxSpeed;
+				yBox += boxSpeed;				//+ Adjust this
 				box.style.top = yBox+"px";
 				}
 				
@@ -158,7 +158,7 @@ function analyseKeypress(q) {
 	//Moving right
 		if (q.keyCode == "39") {
 			if(xBox >= 1300) {					//Is the box 1300 or more pixels from the left? If so, then don't move.
-				box.style.left = xBox+"px";
+				box.style.left = xBox+"px";		//+ Adjust this
 			}
 			
 			else {
@@ -166,7 +166,7 @@ function analyseKeypress(q) {
 				box.style.left = xBox+"px";
 				
 				if(xBox >= 1300) {					//Is the box 1300 or more pixels to from the left? If so, then move back.
-				xBox -= boxSpeed;
+				xBox -= boxSpeed;					//+ Adjust this
 				box.style.left = xBox+"px";
 				}
 				
@@ -193,7 +193,7 @@ function analyseKeypress(q) {
 	//Moving down
 		if (q.keyCode == "40") {
 			if(yBox >= 430) {					//Is the box 484 or more pixels from the top? If so, then don't move.
-				box.style.top = yBox+"px";
+				box.style.top = yBox+"px";		//+ Adjust this
 			}
 			
 			
@@ -202,7 +202,7 @@ function analyseKeypress(q) {
 				box.style.top = yBox+"px";
 				
 				if(yBox >= 430) {					//Is the box 430 or more pixels to from the top? If so, then move back.
-				yBox -= boxSpeed;
+				yBox -= boxSpeed;					//+ Adjust this
 				box.style.top = yBox+"px";
 				}
 				
@@ -236,7 +236,7 @@ function itemCheck(q) {
 			if ((xBox +25) > (xCoin - 10) && (xBox + 25) < (xCoin + 30)) {
 				
 				xCoin = (Math.ceil(Math.random() * 131) + 1) * 10;			//Randomly re-places the coin
-				yCoin = (Math.ceil(Math.random() * 44) + 1) * 10;
+				yCoin = (Math.ceil(Math.random() * 44) + 1) * 10;			//+ Adjust this
 				coin.style.left = xCoin+"px";
 				coin.style.top = yCoin+"px";
 				
@@ -255,7 +255,7 @@ function itemCheck(q) {
 			if ((xBox +25) > (xCoin2 - 10) && (xBox + 25) < (xCoin2 + 30)) {
 				
 				xCoin2 = (Math.ceil(Math.random() * 131) + 1) * 10;			//Randomly re-places the coin
-				yCoin2 = (Math.ceil(Math.random() * 44) + 1) * 10;
+				yCoin2 = (Math.ceil(Math.random() * 44) + 1) * 10;			//+ Adjust this
 				coin2.style.left = xCoin2+"px";
 				coin2.style.top = yCoin2+"px";
 				
@@ -274,7 +274,7 @@ function itemCheck(q) {
 			if ((xBox + 25) > (xPowerup - 10) && (xBox + 25) < (xPowerup + 30)) {
 				
 				xPowerup = (Math.ceil(Math.random() * 131) + 1) * 10;				//Randomly re-places powerup
-				yPowerup = (Math.ceil(Math.random() * 44) + 1) * 10;
+				yPowerup = (Math.ceil(Math.random() * 44) + 1) * 10;				//+ Adjust this
 				powerup.style.left = xPowerup+"px";
 				powerup.style.top = yPowerup+"px";
 
@@ -295,5 +295,5 @@ function powerDown(q) {
 function timeOut(q) {
 	alert("30 seconds is up! You scored " + score + " points!");
 	gameRunning = false;
-	gameover.style.color = "red";
+	gameover.style.color = "red"; //+ Adjust this
 }
