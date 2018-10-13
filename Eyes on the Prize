@@ -1,12 +1,12 @@
 <!DOCTYPE HTML>
 
 <!-- Essential Setup -->
-<html lang= "en-US">
+<html lang= "en-US" height = "100%">
 <head>
 <title>Coin Runners</title>
 
 <!-- Stylesheet and Font Setup -->
-<link rel="stylesheet" href="Coin Runners.css">
+<link rel="stylesheet" href="Eyes on the Prize.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
 </head>
@@ -15,7 +15,7 @@
 <body>
 
 <div id = "headSection">
-	<h1>Coin Runners: A Game by Thomas Frew</h1>
+	<h1>Eyes on the Prize: A Game by Thomas Frew</h1>
 </div>
 
 <!-- Rules Section -->
@@ -58,7 +58,7 @@
 </div>
 
 <!-- JavaScript Reference -->
-<script language="javascript" src="Coin Runners.js">
+<script language="javascript" src="Eyes on the Prize.js">
 </script>
 
 <!-- Essential Closure -->
