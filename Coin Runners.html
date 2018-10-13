@@ -1,47 +1,66 @@
 <!DOCTYPE HTML>
+
+<!-- Essential Setup -->
 <html lang= "en-US">
 <head>
-<title>Exemplar</title>
-<link rel="stylesheet" href="Coin Runners Exp.css">
-<h1>Welcome to Coin Runners!</h1>
+<title>Coin Runners</title>
+
+<!-- Stylesheet and Font Setup -->
+<link rel="stylesheet" href="Coin Runners.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab">
 </head>
 
+<!-- Title Section -->
 <body>
 
-<div id = "textSection">
-<p>
-Collect as many coins as possible in a limited timespan.
-<button type="button" onClick="alertRules()">Click For Rules</button>
-<h2 id = "scoreSection">0</h2>
-</p>
+<div id = "headSection">
+	<h1>Coin Runners: A Game by Thomas Frew</h1>
 </div>
 
+<!-- Rules Section -->
+<div id = "rulesSection">
+	<p>
+	Collect as many coins as possible in a limited timespan.
+	<button type="button" onClick="alertRules()">Click For Rules</button>
+	</p>
+</div>
+
+<!-- Score Section-->
 
 
-
-<div id = "container">
-	<div id = "box"> 
-		<div id ="iris">
-			<div id ="pupil"></div>
+<!-- Game Section -->
+<div id = "gameSection">
+	<div id = "container">
+		<div id = "box"> 
+			<div id ="iris">
+				<div id ="pupil"></div>
+			</div>
+		</div>
+	
+		<div id = "coin">
+		</div>
+	
+		<div id = "coin2">
+		</div>
+	
+		<div id = "powerup">
+		</div>
+	
+		<div id = "gameover">
+			<h2>Game Over</h2>
+		</div>
+		
+		<div id = "scoreSection">
+			<h2 id = "scoreBoard">0</h2>
 		</div>
 	</div>
-	
-	<div id = "coin">
-	</div>
-	
-	<div id = "coin2">
-	</div>
-	
-	<div id = "powerup">
-	</div>
-	
-	<div id = "gameover">
-	<h2>Game Over</h2>
-	</div>
 </div>
 
-<script language="javascript" src="Coin Runners Exp.js">
+<!-- JavaScript Reference -->
+<script language="javascript" src="Coin Runners.js">
 </script>
 
+<!-- Essential Closure -->
 </body>
 </html>
