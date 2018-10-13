@@ -80,16 +80,16 @@ function alertRules () {
 }
 
 //Locates score area an primes for replacement
-var textSection = document.getElementById("textSection");
 var scoreSection = document.getElementById("scoreSection");
-textSection.removeChild(scoreSection);
+var scoreBoard = document.getElementById("scoreBoard");
+scoreSection.removeChild(scoreBoard);
 
 var newScorePara = document.createElement("h2");
 var newScoreNode = document.createTextNode(score);
 newScorePara.appendChild(newScoreNode);
 
-var scoreSection = document.getElementById("scoreSection");
-textSection.appendChild(newScorePara);
+var scoreBoard = document.getElementById("scoreBoard");
+scoreSection.appendChild(newScorePara);
 
 //Eye Color Setup
 var eyeColorList = ["darkblue", "cornflowerblue", "turquoise", "lightgreen", "saddlebrown", "peru", "crimson"];
@@ -279,13 +279,13 @@ function itemCheck(q) {
 				coin.style.top = yCoin+"px";
 				
 				score += 1;
-				textSection.removeChild(newScorePara);
+				scoreSection.removeChild(newScorePara);
 				
 				newScorePara = document.createElement("h2");
 				newScoreNode = document.createTextNode(score);
 				newScorePara.appendChild(newScoreNode);
-				scoreSection = document.getElementById("scoreSection");
-				textSection.appendChild(newScorePara);
+				scoreBoard = document.getElementById("scoreBoard");
+				scoreSection.appendChild(newScorePara);
 			}
 		}
 		
@@ -298,13 +298,13 @@ function itemCheck(q) {
 				coin2.style.top = yCoin2+"px";
 				
 				score += 1;
-				textSection.removeChild(newScorePara);
+				scoreSection.removeChild(newScorePara);
 				
 				newScorePara = document.createElement("h2");
 				newScoreNode = document.createTextNode(score);
 				newScorePara.appendChild(newScoreNode);
-				scoreSection = document.getElementById("scoreSection");
-				textSection.appendChild(newScorePara);
+				scoreBoard = document.getElementById("scoreBoard");
+				scoreSection.appendChild(newScorePara);
 			}
 		}
 		
@@ -334,4 +334,5 @@ function timeOut(q) {
 	alert("30 seconds is up! You scored " + score + " points!");
 	gameRunning = false;
 	gameover.style.display = "inline-block";
+	scoreSection.style.display = "none";
 }
