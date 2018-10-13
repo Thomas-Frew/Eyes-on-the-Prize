@@ -26,21 +26,21 @@ pupil.style.left = xPupil+"px";
 pupil.style.top = yPupil+"px";
 
 //Coin (1)
-var xCoin = (Math.ceil(Math.random() * 131) + 1) * 10;			//+ Adjust this
-var yCoin = (Math.ceil(Math.random() * 44) + 1) * 10;
+var xCoin = 20 + (Math.ceil(Math.random() * (container.offsetWidth - 60)));
+var yCoin = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));
 coin.style.left = xCoin+"px";
 coin.style.top = yCoin+"px";
 
 //Coin (2)
-var xCoin2 = (Math.ceil(Math.random() * 131) + 1) * 10;			//+ Adjust this
-var yCoin2 = (Math.ceil(Math.random() * 44) + 1) * 10;
+var xCoin2 = 20 + (Math.ceil(Math.random() * (container.offsetWidth - 60)));
+var yCoin2 = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));
 coin2.style.left = xCoin2+"px";
 coin2.style.top = yCoin2+"px";
 
 
 //Powerup
-var xPowerup = (Math.ceil(Math.random() * 131) + 1) * 10;		//+ Adjust this
-var yPowerup = (Math.ceil(Math.random() * 44) + 1) * 10;
+var xPowerup = 20 + (Math.ceil(Math.random() * (container.offsetWidth - 60)));
+var yPowerup = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));
 powerup.style.left = xPowerup+"px";
 powerup.style.top = yPowerup+"px";
 
@@ -112,20 +112,20 @@ function analyseKeypress(q) {
 
 //Moving left
 		if (q.keyCode == "37") {
-			if(xBox <= 1) {					//Is the box 1 or less pixels to from the left? If so, then don't move.
-				box.style.left = xBox+"px";	//+ Adjust this
+			if(xBox <= 0) {							//Is the character right against the left edge? If so, don't move.
+				box.style.left = xBox+"px";	
 			}
 			
-			else {							//Otherwise, Move.
-				xBox -= boxSpeed;				//boxSpeed is the parameter for how fast the box moves.
+			else {									//Otherwise, Move.
+				xBox -= boxSpeed;					//boxSpeed is the parameter for how fast the box moves.
 				box.style.left = xBox+"px";
 				
-				if(xBox <= 1) {					//Is the box 1 or less pixels to from the left? If so, then move back.
-				xBox += boxSpeed;				//+ Adjust this
+				if(xBox <= 0) {						//Is the character right against the left edge? If so, then move back!
+				xBox += boxSpeed;
 				box.style.left = xBox+"px";
 				}
 				
-				if (xIris <= 5) {			//Code for the movement of the iris
+				if (xIris <= 5) {					//Code for the movement of the iris
 					iris.style.left = xIris+"px";
 				}
 				
@@ -134,7 +134,7 @@ function analyseKeypress(q) {
 					iris.style.left = xIris+"px";
 				}
 				
-				if (xPupil <= 5) {				//Code for the movement of the pupil
+				if (xPupil <= 5) {					//Code for the movement of the pupil
 					pupil.style.left = xPupil+"px";
 				}
 				
@@ -147,21 +147,21 @@ function analyseKeypress(q) {
 
 	//Moving up
 		if (q.keyCode == "38") {
-			if(yBox <= 1) {					//Is the box 1 or less pixels from the top? If so, then don't move.
-				box.style.top = yBox+"px";	//+ Adjust this
+			if(yBox <= 0) {							//Is the character right up against the top edge? If so, don't move.
+				box.style.top = yBox+"px";
 			}
 			
 			else {
-				yBox -= boxSpeed;				//boxSpeed is the parameter for how fast the box moves.
+				yBox -= boxSpeed;					//boxSpeed is the parameter for how fast the box moves.
 				box.style.top = yBox+"px";
 				
-				if(yBox <= 1) {					//Is the box 1 or less pixels to from the left? If so, then move back.
-				yBox += boxSpeed;				//+ Adjust this
+				if(yBox <= 0) {						//Is the character right against the top edge? If so, then move back!
+				yBox += boxSpeed;
 				box.style.top = yBox+"px";
 				}
 				
 				
-				if (yIris <= 5) {				//Code for the movement of the iris
+				if (yIris <= 5) {					//Code for the movement of the iris
 					iris.style.top = yIris+"px";
 				}
 				
@@ -170,7 +170,7 @@ function analyseKeypress(q) {
 					iris.style.top = yIris+"px";
 				}
 				
-				if (yPupil <= 5) {				//Code for the movement of the pupil
+				if (yPupil <= 5) {					//Code for the movement of the pupil
 					pupil.style.top = yPupil+"px";
 				}
 				
@@ -183,20 +183,20 @@ function analyseKeypress(q) {
 
 	//Moving right
 		if (q.keyCode == "39") {
-			if(xBox >= 1300) {					//Is the box 1300 or more pixels from the left? If so, then don't move.
-				box.style.left = xBox+"px";		//+ Adjust this
+			if(xBox >= container.offsetWidth - 50) {		//Is the character right against the right edge? If so, then don't move.
+				box.style.left = xBox+"px";
 			}
 			
 			else {
-				xBox += boxSpeed;				//boxSpeed is the parameter for how fast the box moves.
+				xBox += boxSpeed;							//boxSpeed is the parameter for how fast the box moves.
 				box.style.left = xBox+"px";
 				
-				if(xBox >= 1300) {					//Is the box 1300 or more pixels to from the left? If so, then move back.
-				xBox -= boxSpeed;					//+ Adjust this
+				if(xBox >= container.offsetWidth - 50) {	//Is the character right against the right edge? If so, then move back!
+				xBox -= boxSpeed;
 				box.style.left = xBox+"px";
 				}
 				
-				if (xIris >= 15) {				//Code for the movement of the iris
+				if (xIris >= 15) {							//Code for the movement of the iris
 					iris.style.left = xIris+"px";
 				}
 				
@@ -204,8 +204,8 @@ function analyseKeypress(q) {
 					xIris += eyeSpeed;
 					iris.style.left = xIris+"px";
 				}
-				
-				if (xPupil >= 10) {				//Code for the movement of the pupil
+					
+				if (xPupil >= 10) {							//Code for the movement of the pupil
 					pupil.style.left = xPupil+"px";
 				}
 				
@@ -218,21 +218,21 @@ function analyseKeypress(q) {
 
 	//Moving down
 		if (q.keyCode == "40") {
-			if(yBox >= 430) {					//Is the box 484 or more pixels from the top? If so, then don't move.
-				box.style.top = yBox+"px";		//+ Adjust this
+			if(yBox >= container.offsetHeight - 60) {					//Is the character right against the bottom edge? If so, then don't move.
+				box.style.top = yBox+"px";
 			}
 			
 			
 			else {
-				yBox += boxSpeed;				//boxSpeed is the parameter for how fast the box moves.
+				yBox += boxSpeed;										//boxSpeed is the parameter for how fast the box moves.
 				box.style.top = yBox+"px";
 				
-				if(yBox >= 430) {					//Is the box 430 or more pixels to from the top? If so, then move back.
-				yBox -= boxSpeed;					//+ Adjust this
-				box.style.top = yBox+"px";
+				if(yBox >= container.offsetHeight - 60) {				//Is the character right against the bottom edge? If so, then move back!
+				yBox -= boxSpeed;
+				box.style.top = yBox+"px";	
 				}
 				
-				if (yIris >= 15) {				//Code for the movement of the iris
+				if (yIris >= 15) {										//Code for the movement of the iris
 					iris.style.top = yIris+"px";
 				}
 				
@@ -241,7 +241,7 @@ function analyseKeypress(q) {
 					iris.style.top = yIris+"px";
 				}
 					
-				if (yPupil >= 10) {				//Code for the movement of the pupil
+				if (yPupil >= 10) {										//Code for the movement of the pupil
 					pupil.style.top = yPupil+"px";
 				}
 				
@@ -273,8 +273,8 @@ function itemCheck(q) {
 		if ((yBoxCentre) > (yCoinCentre - 35) && (yBoxCentre) < (yCoinCentre + 35)) {
 			if ((xBoxCentre) > (xCoinCentre - 35) && (xBoxCentre) < (xCoinCentre + 35)) {
 				
-				xCoin = (Math.ceil(Math.random() * 131) + 1) * 10;			//Randomly re-places the coin
-				yCoin = (Math.ceil(Math.random() * 44) + 1) * 10;			//+ Adjust this
+				xCoin = 20 + (Math.ceil(Math.random() * (container.offsetWidth - 60)));			//Randomly re-places the coin
+				yCoin = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));			//+ Adjust this
 				coin.style.left = xCoin+"px";
 				coin.style.top = yCoin+"px";
 				
@@ -292,8 +292,8 @@ function itemCheck(q) {
 		if ((yBoxCentre) > (yCoin2Centre - 35) && (yBoxCentre) < (yCoin2Centre + 35)) {
 			if ((xBoxCentre) > (xCoin2Centre - 35) && (xBoxCentre) < (xCoin2Centre + 35)) {
 				
-				xCoin2 = (Math.ceil(Math.random() * 131) + 1) * 10;			//Randomly re-places the coin
-				yCoin2 = (Math.ceil(Math.random() * 44) + 1) * 10;			//+ Adjust this
+				xCoin2 = 20 + (Math.ceil(Math.random() * (container.offsetWidth - 60)));			//Randomly re-places the coin
+				yCoin2 = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));			//+ Adjust this
 				coin2.style.left = xCoin2+"px";
 				coin2.style.top = yCoin2+"px";
 				
@@ -311,8 +311,8 @@ function itemCheck(q) {
 		if ((yBoxCentre) > (yPowerupCentre - 35) && (yBoxCentre) < (yPowerupCentre + 35)) {
 			if ((xBoxCentre) > (xPowerupCentre - 35) && (xBoxCentre) < (xPowerupCentre + 35)) {
 				
-				xPowerup = (Math.ceil(Math.random() * 131) + 1) * 10;				//Randomly re-places powerup
-				yPowerup = (Math.ceil(Math.random() * 44) + 1) * 10;				//+ Adjust this
+				xPowerup = 20 + (Math.ceil(Math.random() * (container.offsetWidth - 60)));				//Randomly re-places powerup
+				yPowerup = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));				//+ Adjust this
 				powerup.style.left = xPowerup+"px";
 				powerup.style.top = yPowerup+"px";
 
