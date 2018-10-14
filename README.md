@@ -16,11 +16,10 @@ bottom: 0px
 EotP can now be played on iPads, Pixel 2s and almost every other device avaliable! I am contantly looking to find more ways to optimise EotP for many screen sizes.
 
 ## Issues
-Although the game is virually bugless, there are still plenty of [improvements and optimisations to be made!](https://github.com/ThomasFrew/Eyes-on-the-Prize/issues). These include additional features, code minifying and redcution, and stylistic adjustments.
+Although the game is virually bugless, there are still plenty of [improvements and optimisations to be made!](https://github.com/ThomasFrew/Eyes-on-the-Prize/issues) These include additional features, code minifying and redcution, and stylistic adjustments.
 
 ## Installation
 To play EotP, all you need is the latest HTML, CSS and JavaScript documents, which can usually be found under [Releases](https://github.com/ThomasFrew/Eyes-on-the-Prize/releases). Nothing else is required for startup: just run the HTML document and enjoy!
 
-### Versions
 *Eyes on the Prize is currently at version 2.0.0. See [Semantic Versioning](https://semver.org/) if you don't understand what this means.*
 
