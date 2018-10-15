@@ -1,6 +1,5 @@
 ////Game Setup
 
-
 //Find where the box iris, pupil, coin is on the HTML Doc
 var box = document.getElementById("box");
 var iris = document.getElementById("iris");
@@ -8,8 +7,8 @@ var pupil = document.getElementById("pupil");
 var coin = document.getElementById("coin");
 
 //Declares and sets initial X and Y positions of the box...
-var xBox = 650;
-var yBox = 260;
+var xBox = container.offsetWidth / 2;
+var yBox = container.offsetHeight / 2;
 box.style.left = xBox+"px";
 box.style.top = yBox+"px";
 
@@ -25,61 +24,31 @@ var yPupil = 7.5;
 pupil.style.left = xPupil+"px";
 pupil.style.top = yPupil+"px";
 
-//Coin (1)
+//First Coin...
 var xCoin = 20 + (Math.ceil(Math.random() * (container.offsetWidth - 60)));
 var yCoin = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));
 coin.style.left = xCoin+"px";
 coin.style.top = yCoin+"px";
 
-//Coin (2)
+//Second Coin...
 var xCoin2 = 20 + (Math.ceil(Math.random() * (container.offsetWidth - 60)));
 var yCoin2 = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));
 coin2.style.left = xCoin2+"px";
 coin2.style.top = yCoin2+"px";
 
-
-//Powerup
+//and Powerup
 var xPowerup = 20 + (Math.ceil(Math.random() * (container.offsetWidth - 60)));
 var yPowerup = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));
 powerup.style.left = xPowerup+"px";
 powerup.style.top = yPowerup+"px";
 
-//Declaring the box and items' central position for hitbox detection
-var xBoxCentre = xBox + (box.offsetWidth / 2);
-var yBoxCentre = yBox + (box.offsetHeight / 2);
-var xCoinCentre = xCoin + (coin.offsetWidth / 2);
-var yCoinCentre = yCoin + (coin.offsetHeight / 2);
-var xCoin2Centre = xCoin2 + (coin2.offsetWidth / 2);
-var yCoin2Centre = yCoin2 + (coin2.offsetHeight / 2);
-var xPowerupCentre = xPowerup + (powerup.offsetWidth / 2);
-var yPowerupCentre = yPowerup + (powerup.offsetHeight / 2);
-
-//Styles gameover to be invisible
-gameover.style.display = "none";
-
-//Storing Essential Variables
-var boxSpeed = 10;
+//Storing Other Essential Variables
 var eyeSpeed = 1;
 var score = 0;
 var gameRunning = true;
-var timer;
+var powerupTimer;
 
-// Provides a rule alert on 'Show Rules" click
-function alertRules () {
-        const RULES = [
-                'You have 30 seconds to collect as many coins as you can.',
-                'Green power ups will give you a short speed boost.'
-        ];
-
-        let ruleOutput = "Rules:\n";
-        RULES.forEach(rule => {
-                ruleOutput += rule + "\n";
-        })
-
-        alert(ruleOutput);
-}
-
-//Locates score area an primes for replacement
+//Locates score area an primes for replacement (following var score)
 var scoreSection = document.getElementById("scoreSection");
 var scoreBoard = document.getElementById("scoreBoard");
 scoreSection.removeChild(scoreBoard);
@@ -91,16 +60,87 @@ newScorePara.appendChild(newScoreNode);
 var scoreBoard = document.getElementById("scoreBoard");
 scoreSection.appendChild(newScorePara);
 
-//Eye Color Setup
-var eyeColorList = ["darkblue", "cornflowerblue", "turquoise", "lightgreen", "saddlebrown", "peru", "crimson"];
-var eyeColor = Math.floor(Math.random() * 7 + 1);
+//Determining Box Speed
+if (container.offsetWidth >= container.offsetHeight) {
+	var boxSpeed = Math.ceil(container.offsetWidth / 100);
+}
+else {
+	var boxSpeed = Math.ceil(container.offsetHeight / 100);
+}
+
+//Declaring the box and items' central position for hitbox detection
+var xBoxCentre = xBox + (box.offsetWidth / 2);
+var yBoxCentre = yBox + (box.offsetHeight / 2);
+var xCoinCentre = xCoin + (coin.offsetWidth / 2);
+var yCoinCentre = yCoin + (coin.offsetHeight / 2);
+var xCoin2Centre = xCoin2 + (coin2.offsetWidth / 2);
+var yCoin2Centre = yCoin2 + (coin2.offsetHeight / 2);
+var xPowerupCentre = xPowerup + (powerup.offsetWidth / 2);
+var yPowerupCentre = yPowerup + (powerup.offsetHeight / 2);
+	
+// Provides a rule alert on 'Show Rules" click
+function alertRules () {
+        const RULES = [
+				"You play as an eyeball, running around with the arrow keys.",
+                "You have 30 seconds to collect as many coins as you can, each worth 1 point.",
+                "Green powerups will give you a short speed boost.",
+				"Red powerups will give you 2 points, but randomizes the coins' positions",
+				"Blue powerups will give you 3 additional seconds.",
+        ];
+
+        let ruleOutput = "Rules:\n";
+        RULES.forEach(rule => {
+                ruleOutput += rule + "\n";
+        })
+
+        alert(ruleOutput);
+}
+
+//Random Color Setup
+var eyeColorList = ["#03A1BC", "#CC2936", "#606060", "ffff4a", "#58f01a"]
+var eyeColor = Math.floor(Math.random() * 5);
 iris.style.background = eyeColorList[eyeColor];
+
+//Random Powerup Setup
+var powerupID = Math.ceil(Math.random() * 3);
+
+if (powerupID == 1) {
+	powerup.style.background = "#58f01a";
+}
+
+if (powerupID == 2) {
+	powerup.style.background = "#CC2936";
+}
+
+if (powerupID == 3) {
+	powerup.style.background = "#03A1BC";
+}
+
+//Timer Creation
+var timeLeft = 30
+setInterval(countSec, 1000);
+
+function countSec() {
+	if (gameRunning == true) {
+		timeLeft -= 1
+			if (timeLeft < 1) {
+			timeOut()
+		}
+	}
+}
+
+function timeOut(q) {
+	alert("Your time is up! You scored " + score + " points!");
+	gameRunning = false;
+	gameover.style.display = "inline-block";
+	scoreSection.style.display = "none";
+}
+
+//Styles gameover to be invisible
+gameover.style.display = "none";
 
 //Creates a function to detect keypresses
 window.addEventListener("keydown", analyseKeypress, false);
-
-//Timer Creation
-setTimeout(timeOut, 30000);
 
 
 /////Main Game Loop
@@ -274,7 +314,7 @@ function itemCheck(q) {
 			if ((xBoxCentre) > (xCoinCentre - 35) && (xBoxCentre) < (xCoinCentre + 35)) {
 				
 				xCoin = 20 + (Math.ceil(Math.random() * (container.offsetWidth - 60)));			//Randomly re-places the coin
-				yCoin = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));			//+ Adjust this
+				yCoin = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));
 				coin.style.left = xCoin+"px";
 				coin.style.top = yCoin+"px";
 				
@@ -293,7 +333,7 @@ function itemCheck(q) {
 			if ((xBoxCentre) > (xCoin2Centre - 35) && (xBoxCentre) < (xCoin2Centre + 35)) {
 				
 				xCoin2 = 20 + (Math.ceil(Math.random() * (container.offsetWidth - 60)));			//Randomly re-places the coin
-				yCoin2 = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));			//+ Adjust this
+				yCoin2 = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));
 				coin2.style.left = xCoin2+"px";
 				coin2.style.top = yCoin2+"px";
 				
@@ -312,27 +352,71 @@ function itemCheck(q) {
 			if ((xBoxCentre) > (xPowerupCentre - 35) && (xBoxCentre) < (xPowerupCentre + 35)) {
 				
 				xPowerup = 20 + (Math.ceil(Math.random() * (container.offsetWidth - 60)));				//Randomly re-places powerup
-				yPowerup = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));				//+ Adjust this
+				yPowerup = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));
 				powerup.style.left = xPowerup+"px";
 				powerup.style.top = yPowerup+"px";
 
-				boxSpeed = 20;
-				clearInterval(timer)
-				timer = setTimeout(powerDown, 10000);
+//Powerup 1 (Speed Boost)
+				if (powerupID == 1) {
+					if (container.offsetWidth >= container.offsetHeight) {
+						boxSpeed = Math.ceil(container.offsetWidth / 100) * 2;
+					}
+					else {
+						boxSpeed = Math.ceil(container.offsetHeight / 100) * 2;
+					}
+					clearInterval(powerupTimer)
+					powerupTimer = setTimeout(powerDown, 10000);
+				}
+				
+//Powerup 2 (Score Boost & Randomization)					
+				if (powerupID == 2) {
+					score += 2;
+					scoreSection.removeChild(newScorePara);
+				
+					newScorePara = document.createElement("h2");
+					newScoreNode = document.createTextNode(score);
+					newScorePara.appendChild(newScoreNode);
+					scoreBoard = document.getElementById("scoreBoard");
+					scoreSection.appendChild(newScorePara);
+					
+					xCoin = 20 + (Math.ceil(Math.random() * (container.offsetWidth - 60)));				//Randomly re-places the coin
+					yCoin = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));
+					coin.style.left = xCoin+"px";
+					coin.style.top = yCoin+"px";
+				
+					xCoin2 = 20 + (Math.ceil(Math.random() * (container.offsetWidth - 60)));			//Randomly re-places the coin
+					yCoin2 = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));
+					coin2.style.left = xCoin2+"px";
+					coin2.style.top = yCoin2+"px";
+				}
+
+//Powerup 3 (Time Boost)				
+				if (powerupID == 3) {
+					timeLeft += 3;
+				}
+		
+//Powerup re-determination		
+				powerupID = Math.ceil(Math.random() * 3);
+				if (powerupID == 1) {
+					powerup.style.background = "#58f01a";
+				}
+				if (powerupID == 2) {
+					powerup.style.background = "#CC2936";
+				}
+				if (powerupID == 3) {
+					powerup.style.background = "#03A1BC";
+				}
 			}
 		}
 	}
 }
 
-//Code for poweing down
+//Code for Powerup 1's powering down
 function powerDown(q) {
-	boxSpeed = 10;
-}
-
-//Declaring a Time Out and Game Over
-function timeOut(q) {
-	alert("30 seconds is up! You scored " + score + " points!");
-	gameRunning = false;
-	gameover.style.display = "inline-block";
-	scoreSection.style.display = "none";
+	if (container.offsetWidth >= container.offsetHeight) {
+		boxSpeed = Math.ceil(container.offsetWidth / 100);
+	}
+	else {
+		boxSpeed = Math.ceil(container.offsetHeight / 100);
+	}
 }
