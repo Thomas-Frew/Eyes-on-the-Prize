@@ -1,115 +1,123 @@
-/* General Head and Body Elements (to be removed)*/
+/* General Elements*/
 
 body {
-	background-color: #CC2936;
-	font-family: 'Roboto Slab', serif;
-	color: white;
-	text-align: center;
 	margin: 0px;
 	padding: 0px;
-}
-
-/* Text Elements */
-#headSection {
-    background-color: #03A1BC;
-		padding: 1px;
-		position: center;
-		font-family: 'Open Sans', sans-serif;
-		font-size: 138%;
-		color: white;
-		text-align: center;
-	}
-
-#rulesSection {
-	font-family: 'Roboto Slab', sans-serif;
-	color: white;
-
-	padding: 0px;
-	position: center;
-	margin: 0px;
 }
 
 button {
 	font-family: 'Roboto Slab', sans-serif;
 }
-	
 
-#scoreSection {
-	font-family: 'Roboto Slab', serif;
-	font-size: 150px;
-	color: #404040;
-		
-	display: inline-block;
-	line-height: 75px;
-	height: 200px;
+/* Text Elements */
+
+#textSection {
 	text-align: center;
+	color: #FFFFFF;
+	
+	position: center;
 }
+
+#headSection {
+    font-family: 'Open Sans', sans-serif;
+	font-size: 138%;
+	background-color: #03A1BC;
+	
+	padding: 1px;
+	margin: 0px;
+}
+
+#rulesSection {
+	font-family: 'Roboto Slab', sans-serif;
+	font-size: 100%;
+	background-color: #CC2936;
+	
+	padding: 1px;
+	margin: 0px;
+}
+
 
 	/* Game Elements */
+	
+#gameSection {
+	font-family: 'Roboto Slab', serif;
+	text-align: center;
+	color: #404040;
+}
+
 #container {
 	background: #202020;
+	
 	width: 100%;
-	bottom: 0px;
 	top: 175px;
+	bottom: 0px;
 	position: absolute;
 }
 
-	#box {
+#box {
+	background: #FFFFFF;
+	border-radius: 50%;
+	
 	width: 50px;
 	height: 50px;
-	background: white;
 	position: absolute;
-	border-radius: 50%;
 }
 
 #iris {
+	border-radius: 50%;
+
 	width: 30px;
 	height: 30px;
-	background: turquoise;
 	position: absolute;
-	border-radius: 50%;
 }
 
 #pupil {
+	background: #000000;	
+	border-radius: 50%;
+	
 	width: 15px;
 	height: 15px;
-	background: black;
 	position: absolute;
-	border-radius: 50%;
 }
 
 #coin {
+	background: #FFFF4a;
+	border-radius: 50%;
+
 	width: 20px;
 	height: 20px;
-	background: #ffff4a;
 	position: absolute;
-	border-radius: 50%;
 }
 
 #coin2 {
+	background: #FFFF4a;
+	border-radius: 50%;
+	
 	width: 20px;
 	height: 20px;
-	background: #ffff4a;
 	position: absolute;
-	border-radius: 50%;
 }
 
 #powerup {
+	border-radius: 25%;
+	
 	width: 20px;
 	height: 20px;
-	background: #58f01a;
 	position: absolute;
-	border-radius: 25%;
+}
+
+#scoreSection {
+	font-size: 150px;
+	display: inline-block;
+	
+	line-height: 75px;
+	height: 200px;
 }
 
 #gameover {
-	font-size: 100px;
-	color: #03A1BC;
+	font-size: 120px;
 	display: inline-block;
-	font-family: 'Roboto Slab', serif;
-	text-align: center;
 	
 	line-height: 100px;
     height: 200px;
-    text-align: center;
 }
