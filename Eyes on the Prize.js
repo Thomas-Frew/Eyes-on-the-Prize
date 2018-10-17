@@ -257,7 +257,7 @@ function analyseKeypress(q) {
 		}
 
 	//Downward movement
-		if (q.keyCode == "16") {
+		if (q.keyCode == "40") {
 			if(yBox >= container.offsetHeight - 60) {							//Is the character right up against the bottom edge? If so, don't move.
 				box.style.top = yBox+"px";
 			}
