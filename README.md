@@ -21,5 +21,5 @@ Although the game is virually bugless, there are still plenty of [improvements a
 ## Installation
 To play EotP, all you need is the latest HTML, CSS and JavaScript documents, which can usually be found under [Releases](https://github.com/ThomasFrew/Eyes-on-the-Prize/releases). Nothing else is required for startup: just run the HTML document and enjoy!
 
-*Eyes on the Prize is currently at version 2.0.0. See [Semantic Versioning](https://semver.org/) if you don't understand what this means.*
+*Eyes on the Prize is currently at version 2.2.0. See [Semantic Versioning](https://semver.org/) if you don't understand what this means.*
 
