@@ -106,14 +106,20 @@ iris.style.background = eyeColorList[eyeColor];
 //Random color and ID setup (Randomised)
 var powerupID = Math.ceil(Math.random() * 3);
 
-if (powerupID == 1) {
-	powerup.style.background = "#58f01a";										//This is the colour for the speed boost
-}
-if (powerupID == 2) {
-	powerup.style.background = "#CC2936";										//This is the colour for the bomb
-}
-if (powerupID == 3) {
-	powerup.style.background = "#03A1BC";										//This is the colour for the hourglass
+switch (powerupID) {
+	case 1:
+		powerup.style.background = "#58f01a";									//This is the colour for the speed boost
+		break;
+	case 2:
+		powerup.style.background = "#CC2936";									//This is the colour for the bomb
+		break;
+	case 3:
+		powerup.style.background = "#03A1BC";									//This is the colour for the hourglass
+		break;
+	default:
+		powerup.style.background = "#FF0000";									//This colour signifies an error
+		alert("We've encountered an error! Error Code E001: Powerup styling exception.");	
+		break;
 }
 
 //Timer creation
@@ -141,7 +147,13 @@ gameover.style.display = "none";
 
 //Keypress function creation
 window.addEventListener("keydown", analyseKeypress, false);								//This is the key function of the game!
-	
+
+//Song creation and selection
+var songPlayed = false;
+var song = new Audio('Class Void.mp3');
+var song2 = new Audio('Perseverence.mp3');
+
+var selectedSongID = Math.ceil(Math.random() * 2);
 
 /////Main Game Loop
 
@@ -149,9 +161,10 @@ window.addEventListener("keydown", analyseKeypress, false);								//This is the
 //Movement declaration
 function analyseKeypress(q) {
 	if (gameRunning == true) {											//Checks to see if the game is still running
+	switch (q.keyCode) {
 
 //Leftward movement
-		if (q.keyCode == "37") {
+		case 37:
 			if(xBox <= 0) {											//Is the character right against the left edge? If so, don't move.
 				box.style.left = xBox+"px";	
 			}
@@ -183,10 +196,10 @@ function analyseKeypress(q) {
 					pupil.style.left = xPupil+"px";
 				}
 			}
-		}
+		break;
 
 	//Upward movement
-		if (q.keyCode == "38") {
+		case 38:
 			if(yBox <= 0) {											//Is the character right up against the top edge? If so, don't move.
 				box.style.top = yBox+"px";
 			}
@@ -219,11 +232,11 @@ function analyseKeypress(q) {
 					pupil.style.top = yPupil+"px";
 				}
 			}
-		}
+		break;
 
 	//Rightward Movement
-		if (q.keyCode == "39") {
-			if(xBox >= container.offsetWidth - 50) {							//Is the character right against the right edge? If so, then don't move.
+		case 39:
+			if(xBox >= container.offsetWidth - box.offsetWidth) {						//Is the character right against the right edge? If so, then don't move.
 				box.style.left = xBox+"px";
 			}
 			
@@ -231,7 +244,7 @@ function analyseKeypress(q) {
 				xBox += boxSpeed;									//boxSpeed is the parameter for how fast the box moves.
 				box.style.left = xBox+"px";
 				
-				if(xBox >= container.offsetWidth - 50) {						//Is the character right against the right edge? If so, then move back!
+				if(xBox >= container.offsetWidth - box.offsetWidth) {					//Is the character right against the right edge? If so, then move back!
 				xBox -= boxSpeed;
 				box.style.left = xBox+"px";
 				}
@@ -254,11 +267,11 @@ function analyseKeypress(q) {
 					pupil.style.left = xPupil+"px";
 				}
 			}
-		}
+		break;
 
 	//Downward movement
-		if (q.keyCode == "40") {
-			if(yBox >= container.offsetHeight - 60) {							//Is the character right up against the bottom edge? If so, don't move.
+		case 16:
+			if(yBox >= container.offsetHeight - box.offsetHeight) {						//Is the character right up against the bottom edge? If so, don't move.
 				box.style.top = yBox+"px";
 			}
 			
@@ -266,7 +279,7 @@ function analyseKeypress(q) {
 				yBox += boxSpeed;									//boxSpeed is the parameter for how fast the box moves.
 				box.style.top = yBox+"px";
 				
-				if(yBox >= container.offsetHeight - 60) {						//Is the character right against the bottom edge? If so, then move back!
+				if(yBox >= container.offsetHeight - box.offsetHeight) {					//Is the character right against the bottom edge? If so, then move back!
 				yBox -= boxSpeed;
 				box.style.top = yBox+"px";
 				}
@@ -290,7 +303,27 @@ function analyseKeypress(q) {
 					pupil.style.top = yPupil+"px";
 				}
 			}
-		}
+		break;
+
+//Audio initialisation	
+		case 77:
+		switch (selectedSongID) {
+			case 1:
+				song.play();
+				break;
+			case 2:
+				song2.play();
+				break;
+			default:
+				alert("We've encountered an error! Error Code E002: Song selection exception.");
+				break;	
+			}
+		break;
+
+//Unregistered button
+		default:
+		break;													//Nothing is done
+	}
 		
 //Hitbox updating
 		xBoxCentre = xBox + (box.offsetWidth / 2);
@@ -304,9 +337,9 @@ function analyseKeypress(q) {
 		
 //Item check initialisation
 		itemCheck()
-		
 	}
 }
+
 
 //Item check declaration
 function itemCheck(q) {
@@ -358,54 +391,67 @@ function itemCheck(q) {
 				powerup.style.top = yPowerup+"px";
 
 //Powerup 1, Speed Boost
-				if (powerupID == 1) {
-					if (container.offsetWidth >= container.offsetHeight) {
-						boxSpeed = Math.ceil(container.offsetWidth / 100) * 2;			//Multiplies speed by N
-					}
-					else {
-						boxSpeed = Math.ceil(container.offsetHeight / 100) * 2;
-					}
-					clearInterval(powerupTimer)
-					powerupTimer = setTimeout(powerDown, 10000);
-				}
+				switch (powerupID) {
+					case 1:
+						if (container.offsetWidth >= container.offsetHeight) {
+								boxSpeed = Math.ceil(container.offsetWidth / 100) * 2;	//Multiplies speed by N
+						}
+						else {
+							boxSpeed = Math.ceil(container.offsetHeight / 100) * 2;
+						}
+						clearInterval(powerupTimer)
+						powerupTimer = setTimeout(powerDown, 10000);
+						break;
 				
 //Powerup 2, Bomb					
-				if (powerupID == 2) {
-					score += 2;
-					scoreSection.removeChild(newScorePara);
+					case 2:
+						score += 2;
+						scoreSection.removeChild(newScorePara);
 				
-					newScorePara = document.createElement("h2");
-					newScoreNode = document.createTextNode(score);
-					newScorePara.appendChild(newScoreNode);
-					scoreBoard = document.getElementById("scoreBoard");
-					scoreSection.appendChild(newScorePara);
+						newScorePara = document.createElement("h2");
+						newScoreNode = document.createTextNode(score);
+						newScorePara.appendChild(newScoreNode);
+						scoreBoard = document.getElementById("scoreBoard");
+						scoreSection.appendChild(newScorePara);
 					
-					xCoin = 20 + (Math.ceil(Math.random() * (container.offsetWidth - 60)));		//Randomly re-places the coin
-					yCoin = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));
-					coin.style.left = xCoin+"px";
-					coin.style.top = yCoin+"px";
+						xCoin = 20 + (Math.ceil(Math.random() * (container.offsetWidth - 60)));		//Randomly re-places the coin
+						yCoin = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));
+						coin.style.left = xCoin+"px";
+						coin.style.top = yCoin+"px";
 				
-					xCoin2 = 20 + (Math.ceil(Math.random() * (container.offsetWidth - 60)));	//Randomly re-places the coin
-					yCoin2 = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));
-					coin2.style.left = xCoin2+"px";
-					coin2.style.top = yCoin2+"px";
-				}
+						xCoin2 = 20 + (Math.ceil(Math.random() * (container.offsetWidth - 60)));	//Randomly re-places the coin
+						yCoin2 = 20 + (Math.ceil(Math.random() * (container.offsetHeight - 60)));
+						coin2.style.left = xCoin2+"px";
+						coin2.style.top = yCoin2+"px";
+						break;
 
 //Powerup 3, Time Boost				
-				if (powerupID == 3) {
-					timeLeft += 3;									//Gives N extra seconds 
-				}
+					case 3:
+						timeLeft += 3;									//Gives N extra seconds 
+						break;
+
+					default:
+						alert("We've encountered an error! Error Code E003: Powerup selection exception.");
+						break;
+					}		
 		
-//Powerup re-determination		
+//Further powerup randomisation
 				powerupID = Math.ceil(Math.random() * 3);
-				if (powerupID == 1) {
-					powerup.style.background = "#58f01a";						//Colour for the speed boost
-				}
-				if (powerupID == 2) {
-					powerup.style.background = "#CC2936";						//Colour for the bomb
-				}
-				if (powerupID == 3) {
-					powerup.style.background = "#03A1BC";						//Colour for the hourglass
+
+				switch (powerupID) {
+				case 1:
+					powerup.style.background = "#58f01a";						//This is the colour for the speed boost
+					break;
+				case 2:
+					powerup.style.background = "#CC2936";						//This is the colour for the bomb
+					break;
+				case 3:
+					powerup.style.background = "#03A1BC";						//This is the colour for the hourglass
+					break;
+				default:
+					powerup.style.background = "#FF0000";						//This colour signifies an error
+					alert("We've encountered an error! Error Code E001: Powerup styling exception.");	
+					break;
 				}
 			}
 		}
