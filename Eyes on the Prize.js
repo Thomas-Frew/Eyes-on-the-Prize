@@ -88,7 +88,7 @@ function alertRules () {
           		     	"Green powerups will give you a short speed boost.",
 				"Red powerups will give you 2 points, but randomizes the coins' positions",
 				"Blue powerups will give you 3 additional seconds.",
-				"Toggle music with M"
+				"Press M to toggle music.",
         ];
 
         let ruleOutput = "Rules:\n";
