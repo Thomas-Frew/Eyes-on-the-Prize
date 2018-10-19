@@ -88,6 +88,7 @@ function alertRules () {
           		     	"Green powerups will give you a short speed boost.",
 				"Red powerups will give you 2 points, but randomizes the coins' positions",
 				"Blue powerups will give you 3 additional seconds.",
+				"Toggle music with M"
         ];
 
         let ruleOutput = "Rules:\n";
@@ -270,7 +271,7 @@ function analyseKeypress(q) {
 		break;
 
 	//Downward movement
-		case 16:
+		case 40:
 			if(yBox >= container.offsetHeight - box.offsetHeight) {						//Is the character right up against the bottom edge? If so, don't move.
 				box.style.top = yBox+"px";
 			}
