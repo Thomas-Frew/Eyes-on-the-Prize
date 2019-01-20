@@ -1,4 +1,4 @@
-# Eyes on the Prize
+# Eyes on the Prize [![CodeFactor](https://www.codefactor.io/repository/github/thomasfrew/eyes-on-the-prize/badge)](https://www.codefactor.io/repository/github/thomasfrew/eyes-on-the-prize)
 [Eyes on the Prize](https://github.com/ThomasFrew/Eyes-on-the-Prize) (previously known as Coin Runners) is a simple game I developed using JavaScript. Within the game, you play as an eyeball, using the arrow keys to move around to try to grab as many coins as possible! Several powerups may appear to help you along the way.
 
 ## Experience
