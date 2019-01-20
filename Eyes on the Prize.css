@@ -1,8 +1,8 @@
 /* General Elements*/
 
 body {
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 }
 
 button {
@@ -11,35 +11,35 @@ button {
 
 /* Text Elements */
 
-#textSection {
+#top_level {
 	text-align: center;
 	color: #FFFFFF;
 	
 	position: center;
 }
 
-#headSection {
+#header {
     font-family: 'Open Sans', sans-serif;
 	font-size: 138%;
 	background-color: #03A1BC;
 	
 	padding: 1px;
-	margin: 0px;
+	margin: 0;
 }
 
-#rulesSection {
+#rules_interface {
 	font-family: 'Roboto Slab', sans-serif;
 	font-size: 100%;
 	background-color: #CC2936;
 	
 	padding: 1px;
-	margin: 0px;
+	margin: 0;
 }
 
 
 	/* Game Elements */
 	
-#gameSection {
+#game_interface {
 	font-family: 'Roboto Slab', serif;
 	text-align: center;
 	color: #404040;
@@ -50,7 +50,7 @@ button {
 	
 	width: 100%;
 	top: 175px;
-	bottom: 0px;
+	bottom: 0;
 	position: absolute;
 }
 
@@ -65,6 +65,7 @@ button {
 
 #iris {
 	border-radius: 50%;
+	background: #FF000000;
 
 	width: 30px;
 	height: 30px;
@@ -106,7 +107,7 @@ button {
 	position: absolute;
 }
 
-#scoreSection {
+#score_block {
 	font-size: 150px;
 	display: inline-block;
 	
